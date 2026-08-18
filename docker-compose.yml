@@ -1,0 +1,16 @@
+services:
+  database:
+    image: postgres:16-alpine # Use a specific version of Postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=nexus_trade
+      - POSTGRES_PASSWORD=nexus_trade_dev
+      - POSTGRES_DB=nexus_trade
+    ports:
+      - "5432:5432" # Expose the Postgres port to your local machine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+    driver: local
